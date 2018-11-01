@@ -28,11 +28,10 @@ export default class Game {
       this.height,
       this.paddleWidth,
       this.paddleHeight,
-      // this.boardGap,
       this.width - this.boardGap - this.paddleWidth,
       (this.height - this.paddleHeight) / 2,
-      KEYS.ArrowUp,
-      KEYS.ArrowDown
+      KEYS.up,
+      KEYS.down
     );
     console.log(this.player2);
 
