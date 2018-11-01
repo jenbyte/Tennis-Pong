@@ -12,7 +12,7 @@ export default class Game {
 
   render() {
     // More code goes here...
-    this.gameElement.innterHTML = ""; //empties out any html in this game element
+    this.gameElement.innerHTML = ""; //empties out any html in this game element
     let svg = document.createElementNS(SVG_NS, "svg"); // createElementNS means creating an element with that namespace
     svg.setAttributeNS(null, "width", this.width);
     svg.setAttributeNS(null, "height", this.height);
