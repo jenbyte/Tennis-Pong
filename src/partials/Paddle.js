@@ -38,7 +38,7 @@ export default class Paddle {
         case right:
           this.right();
           break;
-      }
+      } //end of EventListener
     });
   } //end of constructor
 
@@ -58,6 +58,15 @@ export default class Paddle {
   right() {
     this.x = Math.min([this.boardWidth - this.width], [this.x + this.speed]);
   }
+
+  coordinates(x, y, width, height) {
+    let leftX = x;
+    let rightX = x + width;
+    let topY = y;
+    let bottomY = y + height;
+    return [leftX, rightX, topY, bottomY];
+  }
+
   render(svg) {
     let rectPad = document.createElementNS(SVG_NS, 'rect');
     rectPad.setAttributeNS(null, 'width', this.width);

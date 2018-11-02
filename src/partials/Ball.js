@@ -30,18 +30,61 @@ export default class Ball {
       this.vx *= -1;
     }
   }
-  render(svg) {
+
+  paddleCollision(player1, player2) {
+    if (this.vx < 0) {
+      let paddle = player1.coordinates(
+        player1.x,
+        player1.y,
+        player1.width,
+        player1.height
+      );
+      let [leftX, rightX, topY, bottomY] = paddle;
+      if (
+        this.x - this.radius >= rightX &&
+        this.x - this.radius <= leftX &&
+        (this.y >= topY && this.y <= bottomY)
+      ) {
+        this.vx *= -1;
+      }
+      console.log('left paddle');
+    }
+
+    if (this.vx > 0) {
+      let paddle = player2.coordinates(
+        player2.x,
+        player2.y,
+        player2.width,
+        player2.height
+      );
+      let [leftX, rightX, topY, bottomY] = paddle;
+
+      if (
+        this.x + this.radius >= leftX &&
+        this.x + this.radius <= rightX &&
+        (this.y >= topY && this.y <= bottomY)
+      ) {
+        this.vx *= -1;
+        // this.vx = -this.vx;
+      }
+      // console.log('right paddle');
+    } else {
+      //...
+    }
+  }
+
+  render(svg, player1, player2) {
     this.x += this.vx;
     this.y += this.vy;
 
     this.wallCollision();
+    this.paddleCollision(player1, player2);
     let circ = document.createElementNS(SVG_NS, 'circle');
     circ.setAttributeNS(null, 'r', this.radius);
     circ.setAttributeNS(null, 'fill', 'white');
     circ.setAttributeNS(null, 'cx', this.x);
     circ.setAttributeNS(null, 'cy', this.y);
     // circ.setAttributeNS(null, 'stroke', 'red');
-
     svg.appendChild(circ);
   }
 }
