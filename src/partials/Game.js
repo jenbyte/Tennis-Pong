@@ -1,9 +1,8 @@
-import { SVG_NS } from '../settings';
+import { SVG_NS, KEYS } from '../settings';
 import Board from './Board';
 import Paddle from './Paddle';
 import Ball from './Ball';
-import { SVG, KEYS } from '../settings';
-import { runInThisContext } from 'vm';
+import Score from './Score';
 
 export default class Game {
   constructor(element, width, height) {
@@ -57,13 +56,13 @@ export default class Game {
     this.gameElement = document.getElementById(this.element);
     this.board = new Board(this.width, this.height);
     this.ball = new Ball(8, this.width, this.height);
-    console.log(this.ball);
+    this.score1 = new Score(this.width / 2 - 50, 30, 30);
+    this.score2 = new Score(this.width / 2 + 30, 30, 30);
   } //end of constructor
 
   render() {
     if (this.pause) {
       return;
-      console.log(this.pause);
     }
     // More code goes here...
     this.gameElement.innerHTML = ''; //empties out any html in this game element
@@ -77,5 +76,7 @@ export default class Game {
     this.player1.render(svg);
     this.player2.render(svg);
     this.ball.render(svg, this.player1, this.player2);
+    this.score1.render(svg, this.player1.score);
+    this.score2.render(svg, this.player2.score);
   } //end of render
 } //end of Game

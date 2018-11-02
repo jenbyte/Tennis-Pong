@@ -22,7 +22,27 @@ export default class Paddle {
     this.y = y;
     this.speed = 10;
     this.score = 0;
+    this.keyUp = up;
+    this.keyDown = down;
+    this.keyLeft = left;
+    this.keyRight = right;
     this.playerName = playerName;
+    this.keyState = {}; //use this to tell if key is down or up. Fixes problem of players not being able to move at the same time
+
+    document.addEventListener(
+      'keydown',
+      event => {
+        this.keyState[event.key || event.which] = true;
+      },
+      true
+    );
+    document.addEventListener(
+      'keyup',
+      event => {
+        this.keyState[event.key || event.which] = false;
+      },
+      true
+    );
 
     document.addEventListener('keydown', event => {
       switch (event.key) {
@@ -38,8 +58,8 @@ export default class Paddle {
         case right:
           this.right();
           break;
-      } //end of EventListener
-    });
+      }
+    }); //end of EventListener
   } //end of constructor
 
   up() {
@@ -68,6 +88,32 @@ export default class Paddle {
   }
 
   render(svg) {
+    if (this.keyState[this.keyUp] && this.playerName === 'player1') {
+      this.up();
+    }
+    if (this.keyState[this.keyDown] && this.playerName === 'player1') {
+      this.down();
+    }
+    if (this.keyState[this.keyLeft] && this.playerName === 'player1') {
+      this.left();
+    }
+    if (this.keyState[this.keyRight] && this.playerName === 'player1') {
+      this.right();
+    }
+
+    if (this.keyState[this.keyUp] && this.playerName === 'player2') {
+      this.up();
+    }
+    if (this.keyState[this.keyDown] && this.playerName === 'player2') {
+      this.down();
+    }
+    if (this.keyState[this.keyLeft] && this.playerName === 'player2') {
+      this.left();
+    }
+    if (this.keyState[this.keyRight] && this.playerName === 'player2') {
+      this.right();
+    }
+
     let rectPad = document.createElementNS(SVG_NS, 'rect');
     rectPad.setAttributeNS(null, 'width', this.width);
     rectPad.setAttributeNS(null, 'height', this.height);
