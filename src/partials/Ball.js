@@ -43,11 +43,11 @@ export default class Ball {
       if (
         this.x - this.radius <= rightX &&
         this.x - this.radius >= leftX &&
-        (this.y >= topY && this.y <= bottomY)
+        (this.y + this.radius >= topY && this.y - this.radius <= bottomY)
       ) {
         this.vx *= -1;
       }
-      console.log('left paddle');
+      // console.log('left paddle');
     }
 
     if (this.vx > 0) {
@@ -62,7 +62,7 @@ export default class Ball {
       if (
         this.x + this.radius >= leftX &&
         this.x + this.radius <= rightX &&
-        (this.y >= topY && this.y <= bottomY)
+        (this.y + this.radius >= topY && this.y - this.radius <= bottomY)
       ) {
         this.vx *= -1;
         // this.vx = -this.vx;
