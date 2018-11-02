@@ -11,7 +11,8 @@ export default class Paddle {
     up,
     down,
     left,
-    right
+    right,
+    playerName
   ) {
     this.boardHeight = boardHeight;
     this.boardWidth = boardWidth;
@@ -21,6 +22,7 @@ export default class Paddle {
     this.y = y;
     this.speed = 10;
     this.score = 0;
+    this.playerName = playerName;
 
     document.addEventListener('keydown', event => {
       switch (event.key) {
@@ -49,7 +51,11 @@ export default class Paddle {
     this.y = Math.min([this.boardHeight - this.height], [this.y + this.speed]);
   }
   left() {
-    this.x = Math.max(0, [this.x - this.speed]);
+    if (this.playerName === 'player1') {
+      this.x = Math.max(0, [this.x - this.speed]);
+    } else if (this.playerName === 'player2') {
+      this.x = Math.max([this.boardWidth / 2], [this.x - this.speed]);
+    }
   }
   right() {
     this.x = Math.min([this.boardWidth - this.width], [this.x + this.speed]);

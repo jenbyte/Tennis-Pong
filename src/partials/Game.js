@@ -24,7 +24,8 @@ export default class Game {
       KEYS.w,
       KEYS.s,
       KEYS.a,
-      KEYS.d
+      KEYS.d,
+      'player1'
     );
     console.log(this.player1);
 
@@ -38,7 +39,8 @@ export default class Game {
       KEYS.up,
       KEYS.down,
       KEYS.left,
-      KEYS.right
+      KEYS.right,
+      'player2'
     );
     console.log(this.player2);
 
