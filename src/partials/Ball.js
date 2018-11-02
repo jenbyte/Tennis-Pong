@@ -41,8 +41,8 @@ export default class Ball {
       );
       let [leftX, rightX, topY, bottomY] = paddle;
       if (
-        this.x - this.radius >= rightX &&
-        this.x - this.radius <= leftX &&
+        this.x - this.radius <= rightX &&
+        this.x - this.radius >= leftX &&
         (this.y >= topY && this.y <= bottomY)
       ) {
         this.vx *= -1;
