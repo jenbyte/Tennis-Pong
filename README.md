@@ -18,10 +18,22 @@ A basic pong game using SVGs.
 
 ## Keys
 
+- spacebar: pause
+
 **Player 1:**
-* a: up
-* z: down
+
+- w: up
+- s: down
+- a: left
+- d: right
 
 **Player 2:**
-* ▲ : up
-* ▼: down
+
+- ↑ : up
+- ↓: down
+- ←: left
+- →: right
+
+## Game play
+
+First player to reach 5 points win.

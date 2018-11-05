@@ -27,7 +27,7 @@ export default class Paddle {
     this.keyLeft = left;
     this.keyRight = right;
     this.playerName = playerName;
-    this.keyState = {}; //use this to tell if key is down or up. Fixes problem of players not being able to move at the same time
+    this.keyState = {};
 
     document.addEventListener(
       'keydown',
@@ -117,7 +117,7 @@ export default class Paddle {
     let rectPad = document.createElementNS(SVG_NS, 'rect');
     rectPad.setAttributeNS(null, 'width', this.width);
     rectPad.setAttributeNS(null, 'height', this.height);
-    rectPad.setAttributeNS(null, 'fill', '#353535');
+    rectPad.setAttributeNS(null, 'fill', '#fff');
     rectPad.setAttributeNS(null, 'x', this.x);
     rectPad.setAttributeNS(null, 'y', this.y);
 
