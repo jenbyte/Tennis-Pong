@@ -34,6 +34,6 @@ A basic pong game using SVGs.
 - ←: left
 - →: right
 
-## Game play
+**Aim of the game:**
 
 First player to reach 5 points win.
