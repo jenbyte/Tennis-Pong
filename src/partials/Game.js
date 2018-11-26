@@ -9,6 +9,7 @@ export default class Game {
     this.element = element;
     this.width = width;
     this.height = height;
+    this.gameOver = false;
 
     this.paddleWidth = 8;
     this.paddleHeight = 56;
@@ -61,12 +62,14 @@ export default class Game {
     if (this.pause) {
       return;
     }
-    if (this.player1.score === 5) {
+    if (this.player1.score === 5 && !gameOver) {
       alert('Player 1 wins!');
+      gameOver = true;
       location.reload();
     }
-    if (this.player2.score === 5) {
+    if (this.player2.score === 5 && !gameOver) {
       alert('Player 2 wins!');
+      gameOver = true;
       location.reload();
     }
 
