@@ -2,7 +2,7 @@
 
 A basic pong game using SVGs.
 
-<img src="images/ScreenShot-pong.png" width="500" height="auto">
+<img src="ScreenShot-pong.png" width="500" height="auto">
 
 ## Setup
 
